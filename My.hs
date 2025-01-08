@@ -39,9 +39,19 @@ mySwap :: (a, b) -> (b, a)
 mySwap (a, b) = (b, a)
 
 myHead :: [a] -> a
-myHead [] = error "Empty list"
+myHead []     = error "Empty list"
 myHead (a:as) = a
 
 myTail :: [a] -> [a]
-myTail [] = error "Empty list"
+myTail []     = error "Empty list"
 myTail (a:as) = as
+
+myLength :: [a] -> Int
+myLength []     = 0
+myLength (a:as) = 1 + myLength(as)
+
+myNth :: [a] -> Int -> a
+myNth [] b              = error "Index too large"
+myNth (a:as) b | b == 0 = a
+               | b <  0 = error "Index cannot be negative"
+               | b >  0 = myNth as (b - 1)
