@@ -108,3 +108,8 @@ myFoldl :: (b -> a -> b) -> b -> [a] -> b
 myFoldl f v [] = error "Empty list"
 myFoldl f v [l] = f v l
 myFoldl f s (l:ls) = myFoldl f v ls where v = f s l
+
+myFoldr :: (a -> b -> b) -> b -> [a] -> b
+myFoldr f v [] = error "Empty list"
+myFoldr f v [l] = f l v
+myFoldr f s (l:ls) = f l v where v = myFoldr f s ls
