@@ -103,3 +103,8 @@ myFilter :: (a -> Bool) -> [a] -> [a]
 myFilter _ [] = []
 myFilter f (e:es) | f e = e : myFilter f es
                   | not (f e) = myFilter f es
+
+myFoldl :: (b -> a -> b) -> b -> [a] -> b
+myFoldl f v [] = error "Empty list"
+myFoldl f v [l] = f v l
+myFoldl f s (l:ls) = myFoldl f v ls where v = f s l
