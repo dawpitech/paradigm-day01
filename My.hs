@@ -76,3 +76,14 @@ myAppend (a:as) b = a : myAppend as b
 myReverse :: [a] -> [a]
 myReverse [] = []
 myReverse (a:as) = myAppend (myReverse as) [a]
+
+myInit :: [a] -> [a]
+myInit [] = error "Empty list"
+myInit [a] = []
+myInit (a:as) = a : myInit as
+
+myLast :: [a] -> a
+myLast [] = error "Empty list"
+myLast [a] = a
+myLast (a:as) = myLast as
+
