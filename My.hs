@@ -113,3 +113,11 @@ myFoldr :: (a -> b -> b) -> b -> [a] -> b
 myFoldr f v [] = error "Empty list"
 myFoldr f v [l] = f l v
 myFoldr f s (l:ls) = f l v where v = myFoldr f s ls
+
+myInvertFilter :: (a -> Bool) -> [a] -> [a]
+myInvertFilter _ [] = []
+myInvertFilter f (e:es) | f e = myInvertFilter f es
+                        | not (f e) = e : myInvertFilter f es
+
+myPartition :: (a -> Bool) -> [a] -> ([a], [a])
+myPartition f l = (myFilter f l, myInvertFilter f l)
