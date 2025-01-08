@@ -121,3 +121,11 @@ myInvertFilter f (e:es) | f e = myInvertFilter f es
 
 myPartition :: (a -> Bool) -> [a] -> ([a], [a])
 myPartition f l = (myFilter f l, myInvertFilter f l)
+
+myTripleAppend :: [a] -> [a] -> [a] -> [a]
+myTripleAppend a b c = myAppend a (myAppend b c)
+
+myQuickSort :: (a -> a -> Bool) -> [a] -> [a]
+myQuickSort f [] = []
+myQuickSort f (a:as) = myTripleAppend (myQuickSort f i) [a] (myQuickSort f s)
+    where (s, i) = myPartition (f a) as
