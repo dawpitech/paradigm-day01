@@ -62,3 +62,17 @@ myTake :: Int -> [a] -> [a]
 myTake b [] = []
 myTake 0 _ = []
 myTake b (a:as) = a : myTake (b - 1) as
+
+myDrop :: Int -> [a] -> [a]
+myDrop b [] = []
+myDrop 0 a = a
+myDrop b (_:as) = myDrop (b -1) as
+
+myAppend :: [a] -> [a] -> [a]
+myAppend [] b = b
+myAppend a [] = a
+myAppend (a:as) b = a : myAppend as b
+
+myReverse :: [a] -> [a]
+myReverse [] = []
+myReverse (a:as) = myAppend (myReverse as) [a]
