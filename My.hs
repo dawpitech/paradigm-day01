@@ -51,7 +51,7 @@ myLength []     = 0
 myLength (a:as) = 1 + myLength(as)
 
 myNth :: [a] -> Int -> a
+myNth (a:as) 0          = a
 myNth [] b              = error "Index too large"
-myNth (a:as) b | b == 0 = a
-               | b <  0 = error "Index cannot be negative"
+myNth (a:as) b | b <  0 = error "Index cannot be negative"
                | b >  0 = myNth as (b - 1)
