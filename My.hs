@@ -87,3 +87,19 @@ myLast [] = error "Empty list"
 myLast [a] = a
 myLast (a:as) = myLast as
 
+myZip :: [a] -> [b] -> [(a, b)]
+myZip _ [] = []
+myZip [] _ = []
+myZip (a:as) (b:bs) = (a, b) : myZip as bs
+
+myUnzip :: [(a, b)] -> ([a], [b])
+myUnzip ((a, b):ts) = (a:as, b:bs) where (as, bs) = myUnzip ts
+
+myMap :: (a -> b) -> [a] -> [b]
+myMap _ [] = []
+myMap f (e:es) = f e : myMap f es
+
+myFilter :: (a -> Bool) -> [a] -> [a]
+myFilter _ [] = []
+myFilter f (e:es) | f e = e : myFilter f es
+                  | not (f e) = myFilter f es
