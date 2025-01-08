@@ -99,10 +99,14 @@ myMap :: (a -> b) -> [a] -> [b]
 myMap _ [] = []
 myMap f (e:es) = f e : myMap f es
 
+myNot :: Bool -> Bool
+myNot True = False
+myNot False = True
+
 myFilter :: (a -> Bool) -> [a] -> [a]
 myFilter _ [] = []
 myFilter f (e:es) | f e = e : myFilter f es
-                  | not (f e) = myFilter f es
+                  | myNot (f e) = myFilter f es
 
 myFoldl :: (b -> a -> b) -> b -> [a] -> b
 myFoldl f v [] = error "Empty list"
@@ -117,7 +121,7 @@ myFoldr f s (l:ls) = f l v where v = myFoldr f s ls
 myInvertFilter :: (a -> Bool) -> [a] -> [a]
 myInvertFilter _ [] = []
 myInvertFilter f (e:es) | f e = myInvertFilter f es
-                        | not (f e) = e : myInvertFilter f es
+                        | myNot (f e) = e : myInvertFilter f es
 
 myPartition :: (a -> Bool) -> [a] -> ([a], [a])
 myPartition f l = (myFilter f l, myInvertFilter f l)
