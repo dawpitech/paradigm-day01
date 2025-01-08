@@ -93,6 +93,7 @@ myZip [] _ = []
 myZip (a:as) (b:bs) = (a, b) : myZip as bs
 
 myUnzip :: [(a, b)] -> ([a], [b])
+myUnzip [] = ([], [])
 myUnzip ((a, b):ts) = (a:as, b:bs) where (as, bs) = myUnzip ts
 
 myMap :: (a -> b) -> [a] -> [b]
