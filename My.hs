@@ -50,7 +50,7 @@ myTail (a:as) = as
 
 myLength :: [a] -> Int
 myLength []     = 0
-myLength (a:as) = 1 + myLength (as)
+myLength (a:as) = 1 + myLength as
 
 myNth :: [a] -> Int -> a
 myNth (a:as) 0          = a
