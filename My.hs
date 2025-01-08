@@ -20,8 +20,8 @@ myMin x y | x >= y = y
           | x <  y = x
 
 myMax :: Int -> Int -> Int
-myMax x y | x >= y = y
-          | x <  y = x
+myMax x y | x >= y = x
+          | x <  y = y
 
 myTuple :: a -> b -> (a, b)
 myTuple a b = (a, b)
