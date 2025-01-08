@@ -4,6 +4,8 @@
 -- File description:
 -- My.hs
 -}
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+{-# HLINT ignore "Use foldr" #-}
 
 mySucc :: Int -> Int
 mySucc x = x + 1
@@ -48,10 +50,15 @@ myTail (a:as) = as
 
 myLength :: [a] -> Int
 myLength []     = 0
-myLength (a:as) = 1 + myLength(as)
+myLength (a:as) = 1 + myLength (as)
 
 myNth :: [a] -> Int -> a
 myNth (a:as) 0          = a
 myNth [] b              = error "Index too large"
 myNth (a:as) b | b <  0 = error "Index cannot be negative"
                | b >  0 = myNth as (b - 1)
+
+myTake :: Int -> [a] -> [a]
+myTake b [] = []
+myTake 0 _ = []
+myTake b (a:as) = a : myTake (b - 1) as
