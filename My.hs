@@ -1,4 +1,3 @@
-import Distribution.Simple.Utils (xargs)
 {-
 -- EPITECH PROJECT, 2025
 -- PARADIGM-DAY01
@@ -38,3 +37,11 @@ mySnd (a, b) = b
 
 mySwap :: (a, b) -> (b, a)
 mySwap (a, b) = (b, a)
+
+myHead :: [a] -> a
+myHead [] = error "Empty list"
+myHead (a:as) = a
+
+myTail :: [a] -> [a]
+myTail [] = error "Empty list"
+myTail (a:as) = as
